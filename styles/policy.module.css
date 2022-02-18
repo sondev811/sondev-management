@@ -1,0 +1,90 @@
+.policy {
+  background-image: url(../public/policy-background.jpg);
+  height: 500px;
+  position: relative;
+  margin-bottom: 50px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.policy::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.policy h1 {
+  font-size: 80px;
+  font-weight: bold;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin: 0
+}
+.policy p {
+  font-size: 24px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  margin-top: 10px;
+}
+.policyContent {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 150px;
+}
+.policyContent p {
+  font-size: 20px;
+  color: #212529;
+  margin-bottom: 20px;
+}
+.policyContent h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+.footer {
+  margin-top: 50px;
+  height: 150px;
+  border-top: 1px solid rgba(0,0,0,.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.icon {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.icon span {
+  width: 50px;
+  height: 50px;
+  background: #000;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  margin: 0 10px;
+  display: flex;
+  font-size: 20px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: .3s all;
+}
+.icon span:hover {
+  background: #333;
+}
+.icon svg {
+  margin: 0 auto;
+}
