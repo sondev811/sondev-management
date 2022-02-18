@@ -1,4 +1,4 @@
-import styles from '../styles/Login.module.css';
+import styles from '../styles/login.module.css';
 import FacebookLogin from 'react-facebook-login';
 import Link from 'next/link'
 export default function Login() {
