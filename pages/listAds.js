@@ -66,6 +66,8 @@ export default function ListAds() {
     const userLocal = authService.getLocalStorage('user');
     if (!userLocal || !userLocal.accessToken) return;
     const params = {
+      date_preset: 'maximum',
+      fields: 'spend,impressions,cpm,cpc,account_id,campaign_id',
       access_token: userLocal.accessToken
     };
     const insight = await businessService.getInsights(id, params);

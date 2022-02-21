@@ -2,8 +2,6 @@ import styles from "../styles/adsAcc.module.scss";
 
 export default function Insight(props) {
   const { data } = props;
-  console.log(data);
- 
   return (
     <div className={styles.adsAcc}>
       { data && data.length ? (
