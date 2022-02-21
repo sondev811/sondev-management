@@ -39,7 +39,7 @@ export default function Login() {
           <div className={styles.name}>Sondev</div>
           <div className={styles.title}>Sondev will provide users to Manage his business and Ads, also could see Ads Insights</div>
           <FacebookLogin
-            appId="623619475598221"
+            appId="481754490190346"
             autoLoad={false}
             fields="name,email,picture"
             onClick={(res) => componentClicked(res)}
