@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
+import { BiArrowBack } from 'react-icons/bi';
+import Insight from '../components/Insight';
 import authService from '../services/auth.service';
 import businessService from '../services/business.service';
 import styles from '../styles/ads.module.scss';
+import { adsHeader } from "../constants/api.constant";
 export default function ListAds() {
   const [listCampaigns, setListCampaigns] = useState([]);
   const [adsAccounts, setAdsAccounts] = useState([]);
   const [campaigns, setCampaigns] = useState([]);
+  const [insights, setInsights] = useState([]);
+  const [isOpenInsights, setIsOpenInsights] = useState(false);
+  const [adsTitle, setAdsTitle] = useState(adsHeader.ADS(0));
 
   useEffect(() => {
     const getBusinesses = async () => {
@@ -53,6 +59,7 @@ export default function ListAds() {
 
   useEffect(() => { 
     setListCampaigns(campaigns);
+    setAdsTitle(adsHeader.ADS(campaigns.length));
   }, [campaigns]);
 
   const getInsights = async (id) => {
@@ -62,7 +69,9 @@ export default function ListAds() {
       access_token: userLocal.accessToken
     };
     const insight = await businessService.getInsights(id, params);
-    console.log(insight);
+    setInsights(insight.result.data);
+    setIsOpenInsights(true);
+    setAdsTitle(adsHeader.INSIGHTS);
   }
 
   const handle = async (list) => {
@@ -74,23 +83,34 @@ export default function ListAds() {
     return temp;
   }
 
+  const backToAds = () => {
+    setIsOpenInsights(false);
+    setAdsTitle(adsHeader.ADS(campaigns.length));
+  }
+
   return (
     <div className={styles.campaign}>
-      <h2>Ads Management({listCampaigns.length})</h2>
-      <div className={styles.campaignWrapper}>
-        {
-          listCampaigns.length ? listCampaigns.map(campaign => (
-          <div key={campaign.id} className={styles.campaignItem}>
-            <div><span>Id:</span> <p>{campaign.id}</p></div>
-            <div><span>Name:</span> <p>{campaign.name}</p></div>
-            <div><span>Objective:</span> <p>{campaign.objective}</p></div>
-            <div><span>Status:</span> <p>{campaign.status}</p></div>
-            <div><span>Budget remaining:</span> <p>{campaign.budget_remaining}</p></div>
-            <div><span>Create time:</span> <p>{campaign.created_time}</p></div>
-            <div><button onClick={() => getInsights(campaign.id)}>Insight</button></div>
-          </div>
-        )) : <p>No campaign</p>}
+      <div className={styles.backAds}>
+        {isOpenInsights && <span onClick={() => backToAds()}><BiArrowBack/></span> } 
       </div>
+      <h2>{adsTitle}</h2>
+      { !isOpenInsights && (
+        <div className={styles.campaignWrapper}>
+          {
+            listCampaigns.length ? listCampaigns.map(campaign => (
+            <div key={campaign.id} className={styles.campaignItem}>
+              <div><span>Id:</span> <p>{campaign.id}</p></div>
+              <div><span>Name:</span> <p>{campaign.name}</p></div>
+              <div><span>Objective:</span> <p>{campaign.objective}</p></div>
+              <div><span>Status:</span> <p>{campaign.status}</p></div>
+              <div><span>Budget remaining:</span> <p>{campaign.budget_remaining}</p></div>
+              <div><span>Create time:</span> <p>{campaign.created_time}</p></div>
+              <div><button onClick={() => getInsights(campaign.id)}>Insight</button></div>
+            </div>
+          )) : <p>No campaign</p>}
+        </div>
+      ) }
+      { isOpenInsights && <Insight data={insights}/>}
     </div>
   )
 }

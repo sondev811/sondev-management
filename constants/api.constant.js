@@ -55,3 +55,8 @@ export const businessHeader = {
   PAGE: 'Pages',
   ADS_ACC: 'Ads Accounts'
 }
+
+export const adsHeader = {
+  ADS: (value) => `Ads Management(${value})`,
+  INSIGHTS: 'Insights'
+}

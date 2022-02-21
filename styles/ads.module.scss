@@ -1,4 +1,13 @@
 .campaign {
+  h2 {
+    margin: 10px;
+  }
+  .backAds {
+    font-size: 20px;
+    span {
+      cursor: pointer;
+    }
+  }
   .campaignWrapper {
     padding: 1rem 0;
     display: grid;
