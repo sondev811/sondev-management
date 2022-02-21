@@ -1,4 +1,4 @@
-import styles from '../styles/policy.module.css';
+import styles from '../styles/policy.module.scss';
 import { FaFacebookF } from 'react-icons/fa';
 import { FiGithub } from 'react-icons/fi';
 import { BsTwitter } from 'react-icons/bs';

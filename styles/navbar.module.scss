@@ -1,0 +1,33 @@
+.navbarLogo {
+  padding: 1rem;
+  text-align: center;
+  img {
+    width: 90px;
+  }
+}
+.navbarMenu {
+  padding: 0 10px;
+  a {
+    padding: .7rem 1.5rem;
+    display: flex;
+    list-style: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #a7a7a7;
+    font-weight: 600;
+    transition: all .3s;
+    span {
+      padding-right: 10px;
+      font-size: 1.5rem;
+      line-height: 0;
+      padding-right: 1rem;
+    }
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+.active {
+  background-color: #121212;
+  color: #fff;
+}
